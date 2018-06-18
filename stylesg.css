@@ -1,0 +1,102 @@
+body {
+
+}
+h1 {
+    font-size: 2em;
+}
+.global {
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.banner {
+    background: hsla(0, 0%, 90%, 1);
+    /*position:fixed;*/
+}
+#titrebanner {
+    font-size: 3em;
+    text-align: center;
+    color: black;
+    padding: .5em;
+}
+#menuOff {
+    display: inline-block;
+    margin: 0 0em;
+    padding: 5px 3.9em;
+    background-color: hsla(0, 0%, 70%, 1);
+    text-decoration: none;
+    color: black;
+}
+.mainmenu {
+    background: hsla(0, 0%, 10%, 1);
+    color: hsla(0, 0%, 90%, .90);    
+    padding: 5px;
+}
+.master {
+    min-height: 37em;
+    /*border: 1px red solid;*/
+    display: flex;
+}
+.main {
+
+    line-height: 1.5;
+    flex: 1 1 auto;
+    order: 1;
+}
+.main > article {
+    padding: 2% 8%;
+}
+.sidebar1 {
+    background: hsla(0, 0%, 70%, 1);
+    font-size:1.2em
+    padding: .8em .8em;
+    text-decoration: none;
+    color: black;
+    flex: 0 0 11.5em;
+    order: 0;
+    /*border:solid 1px #008000;*/
+    overflow: hidden;
+    transition: flex 1s ease, padding 1s ease;
+}
+.sidebar1 li > a,
+.sidebar1 h1 {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+     color: hsla(0, 0%, 0%, 1);
+    /*font-size: 1.1em;*/
+    transition: flex 3s ease, padding 3s ease, color 1s ease .5s;
+}
+.sidebar1 a:hover, .sidebar1 a:focus {
+    background: hsl(0, 0%, 20%);
+    font-size: 1.2em;
+    color: white;
+    transition:.4s
+}
+.sidebar2 {
+    display: none;
+}
+.footer {
+    background: hsla(0, 0%, 90%, 1);
+    padding: 1% 2%;
+}
+.right-toggle {
+    order: 2;
+}
+.nosidebar {
+    flex-direction: column;
+}
+.hide {
+    flex: 0 0 0;
+    padding: 0;
+    color: hsla(0, 0%, 70%, 0);
+    transition: color .5s ease, flex 1s ease .3s, padding 1s ease .3s;
+}
+.hide li>a,
+.hide h1{
+     color: hsla(0, 0%, 0%, 0);
+     transition: color 1s ease;        
+}
+
+
+

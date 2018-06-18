@@ -1,0 +1,264 @@
+/*mon fichier css*/
+body {
+
+}
+button {
+    color: #404040;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+hr {
+    color: red;
+}
+h1 {
+    font-size: 3em;
+    text-align: center;
+    color: black;   
+}
+.paraText {
+    display: none;
+    border: 2px solid black;
+    color: green;
+    padding: 5px;
+    border-radius: 5px;
+}
+.boldtxt:hover {
+    font-size: x-large;
+}
+form {
+    margin: auto;
+    width: 60%;
+    padding: 1em;
+    line-height: 2;
+    border: 1px solid black;
+}
+#dialog {
+    display: none;
+}
+form span {
+    font-size: 10px;
+    font-style: italic;
+    color: red;
+}
+.card-content p{
+    display:none;
+}
+    
+    
+/* Menu Horizontal*/
+.mainmenu nav ul {
+    width: 98%;
+    margin: 0 auto;
+    list-style: none;
+    box-sizing: border-box;
+    border: 1px solid #FFF;
+    padding: 1px;
+    background-color: #808080;
+    display: flex;
+    /*flex-direction:row;
+     flex-wrap:wrap;*/
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.mainmenu nav ul ul {
+    display: none;
+    position: absolute;
+    z-index: 100;
+}
+.mainmenu nav li {
+    background-color: #c0c0c0;
+    padding: 1px;
+    font-size: 15px;
+    text-align: center;
+    flex: 1 0 auto;
+    transition-duration: 1s;
+}
+
+.ui-icon {
+    font-size: 18px;
+    background-image: url(images/ui-icons_ffffff_256x240.png);
+}
+.mainmenu li a {
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    padding: .6em 1em;
+}
+.mainmenu li a:hover {
+    /*background: hsl(0, 0%, 25%);*/
+    color: orange;
+}
+/*li.has-children > a {
+ padding-right: 0;
+ }*/
+.mainmenu nav ul .toggled-on {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 3em;
+}
+.dropdown {
+    margin: 0;
+    padding: 0 .5em;
+    border: 0;
+    font-family: 'FontAwesome';
+    content: "";
+    text-transform: lowercase; /* Stop screen readers to read the text as capital letters */
+    background-color: transparent;
+}
+.dropdown:after {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 42px;
+    color: white;
+    content: "\f107";
+    line-height: 1em;
+}
+
+.dropdown:hover, .dropdown:focus {
+    background: hsl(0, 0%, 25%);
+}
+
+/*.dropdown.toggle-on:after {
+ background-image: url(images/ui-icons_ffffff_256x240.png);
+ content: "\f106";
+ }*/
+
+/**********************les FlexBox simple******************/
+.sectflex {
+    background: #D9BB73;
+    margin: 0;
+    padding: 1em;
+}
+
+.sectflex ul {
+    /*Css classic*/
+    /*height: 150px;*/
+    border: solid 2px #FFFFFF;
+    background: #000000;
+    margin: 3px;
+    padding: 1em;
+    list-style: none;
+    /*les flex : ici l'UL est le conteneur flex "redresse les éléments contenus"*/
+    display: flex;
+    /*donne la direction des contenus du flex (column,row, column-reverse,row-reverse)*/
+    flex-direction: row;
+    /*le wrap permet de gérer le passage à la ligne automatique (nowrap,wrap,wrap-reverse)*/
+    flex-wrap: wrap;
+    /*felx-flow : permet la gestion de flex-direction et flex-wrap sur une même ligne*/
+    /*justify-content permet de gérer l'alignement et l'espacement des contenus du flex (center,flex-end,flex-start,space-between,space-around)*/
+    justify-content: space-between;
+    /*align-items : aligne les éléménts sur l'axe secondaire (baseline,center,flex-end,flex-start,stretch)*/
+    align-items: center;
+    /*align-content : align le contenu lorsqu'il y a plusieur colonne et/ou lignes(center,flex-end,flex-start,space-between,space-around,stretch)*/
+    align-content: center;
+    /*align-self: permet de définir un flex sur un éléménts a part et/ou sur un hover (baseline,center,flex-end,flex-start,stretch, auto)*/
+
+}
+
+.sectflex li {
+    font-size: 1.5em;
+    text-align: center;
+    background-color: #F8893F;
+    border: 1px solid white;
+    padding: .7em;
+    margin: .2em;
+}
+.flex2 {
+    /*height: 800px;*/
+    align-items: flex-start;
+}
+
+.flex2 li {
+    text-align: justify;
+    /*flex-flow : contient les éléménts ci dessous :
+     *  flex-grow : pour permettre l'agrandissement de l'éléménts contenu dans le flex si supp à 1 prendre x foix plus de place que les autres x
+     *  flex-shrink: pour permettre la réduction de l'éléménts contenu dans le flex
+     *  flex-basis:fixe la largeur par défaut*/
+    flex: 1 0 20em;
+}
+
+li:hover {
+    background-color: black;
+    color: orange;
+}
+/**********************les FlexBox cards******************/
+img {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: auto;
+}
+.div-cards {
+    background-color: #404040;    
+    margin-left: auto;
+    margin-right: auto; 
+    padding: 2% 2%;
+}
+.div-cards h1{
+    font-size: 2em;
+    padding: 5px;
+}
+.div-cards h3 {
+    font-size: 1.5em;
+    color: #F5F5B5;
+}
+
+.cards {
+    /*border: solid .3em white;*/
+    background-color: #CDC3B7;
+    /*width: 90%;*/
+    margin-left: 5%;
+    margin-right: 5%;    
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:space-around;  
+}
+.card {
+    margin:.4em;
+    background-color:#EDE4D4;
+    box-sizing:border-box;    
+    border:#CB842E solid 1px;
+    font-size: 1em;
+    text-align: justify;    
+    flex:0 1 32%;
+    /*align-items:center;*/     
+}
+.card-content{
+    box-sizing: border-box;
+}
+.card a{
+    font-size:1.2em;
+    text-decoration:none;
+    color: black;    
+}
+.card p{
+    margin: 1.5em;
+}
+/*.figure{
+    perspective: 2000px;
+}*/
+#pers{
+    perspective: 2000px;
+}
+.bouge{
+    transition: 1s;
+}
+#bouge:hover{
+    transform:translateZ(50px);
+}
+.bouge:hover{
+    transform:scale(1.05);    
+}
+
+@media screen and (max-width: 55em){
+    .cards{
+        display: flex;
+        flex-direction: column;
+
+
+
+
