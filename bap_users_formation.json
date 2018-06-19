@@ -1,0 +1,9 @@
+[
+    {"type":"header","version":"4.8.0","comment":"Export to JSON plugin for PHPMyAdmin"},
+    {"type":"database","name":"bap"},
+    {"type":"table","name":"bap_users_formation","database":"bap","data":
+        [
+        {"id_user":"1","name":"Test","mail":"test@yahoo.fr","firstname":"Zero","niveau":"5"}
+        ]
+    }
+]
