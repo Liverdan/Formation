@@ -1,4 +1,5 @@
 <hr />
+<div class="formulaire">
 <?php
 //les inputs sont poussé dans $_GET ou POST puis récupérer dans l'array $data
 	$data = $_POST;
@@ -62,4 +63,5 @@
   		<button id="opener" class="ui-button ui-widget ui-corner-all" type="submit"><?php echo $txtBtn ?></button>
 	</div>
 </form></p>
+</div>
 <hr />

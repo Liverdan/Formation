@@ -3,7 +3,6 @@ include 'header.php';
 //include 'monmenu.php';
 //include 'menuv2b.php';
 ?>
-<hr />
 <h3>Article</h3>
 <p class="paraText boldtxt">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -13,14 +12,18 @@ include 'header.php';
 </div-->
 
 <?php
-//include 'form.php';
+include 'form.php';
 //include 'flex.php';
-include 'card.php';
+//include 'card.php';
 ?>
-<br />
+<div class="pied_page">
 <?php
-echo "Post";
+echo "get_browser()";
+var_dump($_GET);
+echo "<br />Post";
 var_dump($_POST);
 echo sprintf("<hr />");
 include 'footer.php';
 ?>
+</div>
+<hr />

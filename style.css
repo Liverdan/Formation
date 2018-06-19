@@ -18,9 +18,10 @@ h1 {
 }
 .paraText {
     display: none;
-    border: 2px solid black;
-    color: green;
-    padding: 5px;
+    border: 2px solid hsla(241, 100%, 32%, 1);
+    color: hsla(241, 100%, 32%, 1);
+    margin:.5em;
+    padding: 1em;
     border-radius: 5px;
 }
 .boldtxt:hover {
@@ -40,6 +41,19 @@ form span {
     font-size: 10px;
     font-style: italic;
     color: red;
+}
+.formulaire{
+    margin:.5em;
+    padding:1em;
+    border: 1px solid hsla(241, 100%, 32%, 1);
+    border-radius: 5px;
+}
+.pied_page{
+    margin:.5em;
+    padding:1em;
+    background:hsla(197, 100%, 81%, 1);
+    border:black 1px solid;
+    border-radius: 5px;
 }
 .card-content p{
     display:none;
@@ -258,7 +272,7 @@ img {
     .cards{
         display: flex;
         flex-direction: column;
-
+}}
 
 
 
