@@ -35,7 +35,7 @@ var_dump($tableau1);
 ?>
 </p>
 <p><?php
-$tableau2=['Orange','Citron','Pomme'];
+$tableau2= ['Orange','Citron','Pomme'];
 foreach ($tableau2 as $ligne) {
 	echo $ligne."\n";
 };
