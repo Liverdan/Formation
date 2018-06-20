@@ -55,6 +55,12 @@ form span {
     border:black 1px solid;
     border-radius: 5px;
 }
+.json-content{
+    border: solid black 1px;
+    border-radius: 5px;
+    margin: .5em;
+    padding: 1em;
+}
 .card-content p{
     display:none;
 }
