@@ -1,9 +1,14 @@
 [
-    {"type":"header","version":"4.8.0","comment":"Export to JSON plugin for PHPMyAdmin"},
-    {"type":"database","name":"bap"},
-    {"type":"table","name":"bap_users_formation","database":"bap","data":
-        [
-        {"id_user":"1","name":"Test","mail":"test@yahoo.fr","firstname":"Zero","niveau":"5"}
-        ]
+    {
+        "first_name": "Julien",
+        "last_name": "Moulin",
+        "birthdate": "08/06",
+        "age": "30",
+        "sex": "M",
+        "address": {
+            "city": "Mantes la Jolie",
+            "zip_code": "78200"
+        },
+        "active": "true"
     }
 ]
