@@ -61,10 +61,46 @@
 
     <div class="widget">
     <button id="opener" class="ui-button ui-widget ui-corner-all" type="submit"><?php echo $txtBtn ?></button>
-</div>
-</form></p>
-</div>
-<div class="json-content">
+    </div>
+    </form></p>
+    </div>
+    <div class="json-content">
+    <script>
+        jreq = new XMLHttpRequest();
+
+        jreq.onreadystatechange = function(event) {
+            // XMLHttpRequest.DONE === 4
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    var goodObject= parseJson(JSON.parse(this.responseText)[0]);
+                    console.log(goodObject);
+                } else {
+                    console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                }
+            }
+        };
+		jreq.open('GET', 'http://formation/bap_users_formation.json');
+        jreq.send(null);
+        
+        function parseJson(object){
+        	for (var key in object){
+        		if (object.hasOwnProperty(key)) {
+        			var value = object[key];
+        			//console.log(value);
+        			//Permet de changer le format des données
+        			switch (true){
+        				case value === "true" || value === "false": //booleen
+        					object[key] = value === "true";
+        					break;
+        				case /\d/.test(value)://valeur de string a Integer
+        					object[key] = parseInt(value);
+        					break;
+        			}
+        		}
+			}
+			return object;
+        }
+    </script>
     <p>
         Json
     </p>
