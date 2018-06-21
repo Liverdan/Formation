@@ -25,5 +25,3 @@ var_dump($_POST);
 echo sprintf("<hr />");
 include 'footer.php';
 ?>
-</div>
-<hr />
