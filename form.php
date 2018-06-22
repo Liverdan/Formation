@@ -68,7 +68,7 @@
 <div class="json-content">
 	<p class="contentJS">Json
     	<form id="userForm">
-    		<label>Prénom</label><input type="text" name="$firstName" placeholder="Prénom"/>
+    		<label>Prénom</label><input type="text" name="firstName" placeholder="Prénom"/>
     		<input type="text" name="lastName" placeholder="Nom"/>
     		<input type="text" name="age" placeholder="Age"/>
     		<input type="text" name="sex" placeholder="Sexe"/>
