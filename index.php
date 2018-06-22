@@ -18,10 +18,5 @@ include 'form.php';
 ?>
 <div class="pied_page">
 <?php
-echo "get_browser()";
-var_dump($_GET);
-echo "<br />Post";
-var_dump($_POST);
-echo sprintf("<hr />");
 include 'footer.php';
 ?>
