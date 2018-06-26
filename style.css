@@ -29,15 +29,16 @@ h1 {
 }
 form {
     margin: auto;
-    width: 60%;
+    width: 35%;
     padding: 1em;
+    padding-left:2em;
     line-height: 2;
     border: 1px solid black;
 }
 #dialog {
     display: none;
 }
-form span {
+.formulaire form span {
     font-size: 10px;
     font-style: italic;
     color: red;
@@ -51,7 +52,7 @@ form span {
 .pied_page{
     margin:.5em;
     padding:1em;
-    background:hsla(197, 100%, 81%, 1);
+    background:hsla(210, 100%, 58%, 0.61);
     border:black 1px solid;
     border-radius: 5px;
 }
@@ -201,7 +202,7 @@ form span {
     flex: 1 0 20em;
 }
 
-li:hover {
+.sidebar1 li:hover {
     background-color: black;
     color: orange;
 }
@@ -272,6 +273,15 @@ img {
 }
 .bouge:hover{
     transform:scale(1.05);    
+}
+ul#sortable li{
+    list-style: none;
+    padding-left:.5em;
+    border:  1px black dotted;
+}
+.fantom{
+    background-color: hsla(360, 100%, 100%, 0.6);
+    height: 1.8em;
 }
 
 @media screen and (max-width: 55em){

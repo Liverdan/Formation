@@ -1,12 +1,7 @@
 /**
  * @author PV3C47FN
 
-$(document).ready(function(e){
-    $('.paraText1').show('slow');
-    $('h3').click(function(e){
-        $('.paraText1').toggle('slow');        
-    });
-}); */
+
 /*Fait apparaitre text si clic sur h1 =>paraText*/
 $(document).ready(function(){ 
     /*Initialise la boite de dialogue sur pas d'ouverture au chargement de la page
@@ -64,41 +59,6 @@ $(function() {
 
 });
 
-/*$(function() {    
-    $('button').click( function() {
-        console.log ("coucou");        
-    });
-});*/
-
-/*( function( $ ) {    
-    $('.dropdown').click( function() {
-        console.log ("coucou");
-        var _this = $( this );
-        e.preventDefault();
-        _this.toggleClass( 'toggle-on' );
-        _this.parent().next( '.sub-menu' ).toggleClass( 'toggled-on' );
-        _this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
-        _this.html( _this.html() === '<span class="screen-reader-text">Expand child menu</span>' ? '<span class="screen-reader-text">Collapse child menu</span>' : '<span class="screen-reader-text">Expand child menu</span>' );
-    } );
-})( jQuery );*/
-
-
-
-
-/*( function( $ ) {
-    // Drastically modified from the function in the WordPress Twenty Fifteen theme
-    // Original source: https://github.com/WordPress/WordPress/blob/master/wp-content/themes/twentyfifteen/js/functions.js
-
-    $( '.dropdown-toggle' ).click( function( e ) {
-        var _this = $( this );
-        e.preventDefault();
-        _this.toggleClass( 'toggle-on' );
-        _this.parent().next( '.sub-menu' ).toggleClass( 'toggled-on' );
-        //_this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
-        //_this.html( _this.html() === '<span class="screen-reader-text">Expand child menu</span>' ? '<span class="screen-reader-text">Collapse child menu</span>' : '<span class="screen-reader-text">Expand child menu</span>' );
-    } );
-
-})( jQuery );*/
 $(function() {  
     $('a.right-toggle').click(function() {
     	if(!$('.sidebar1').hasClass('right-toggle')) {
@@ -120,6 +80,26 @@ $(function() {
             };
     });
 });
+
+$( function() {
+    $( "#sortable" ).disableSelection();
+    $( "#sortable" ).sortable({
+       placeholder:"fantom",
+       update:function(event,ui){
+           var list = ui.item.parent('ul');
+           var cpte=$(list).length;
+           console.log (cpte);
+           var pos=0;
+           $(list.find("li")).each(function() {
+             pos--;
+             console.log (pos);
+             $(this).find("input.positionInput").val(pos);
+           });
+       }
+   });
+   
+});
+
 
 
 
