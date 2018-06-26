@@ -24,7 +24,7 @@
 	if ($name && $firstname && $mail && $niveau) {
 		echo sprintf('<h3> %2$s %1$s votre e-mail %3$s et vous estimez avoir un niveau de %4$s </h3>', $name, $firstname, $mail, $niveau);
 		$txtBtn = "Corriger";
-		$sql = "INSERT INTO users (name, firstname, mail, niveau) VALUES ('$name', '$firstname','$mail','$niveau') ON DUPLICATE KEY UPDATE name='$name',firstname='$firstname',niveau='$niveau'";
+		$sql = "INSERT INTO users (name, firstname, mail, niveau) VALUES ('$name', '$firstname','$mail','$niveau1') ON DUPLICATE KEY UPDATE name='$name',firstname='$firstname',niveau='$niveau1'";
 		if ($connexion -> query($sql)) {
 			echo '<div id="dialog" title="Confirmation"><p>Merci pour votre participation</p></div>';
 		} else {

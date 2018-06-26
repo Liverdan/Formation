@@ -16,7 +16,7 @@
 	<body>
 		<div>
 			<header>
-				<h1>Ma formation php</h1>
+				<h1>Ma Formation</h1>
 			</header>
 		</div>
 <hr />

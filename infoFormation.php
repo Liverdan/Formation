@@ -60,7 +60,7 @@ $connexion = new mysqli(HOST, USER, PWD, DB);
 				}
 				?>
 			</ul> 
-			<input type="submit" name="send" value="Enregistrer"/>
+			<button class="ui-button ui-widget ui-corner-all" type="submit">Enregistrer</button>
 		</form>
 	<div/>
 <?php
