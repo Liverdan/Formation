@@ -12,7 +12,6 @@ require 'acces_db.php';
 	$niveau = 5;
 	$txtBtn = 'Envoyer';
 	$alerte = "Vous avez oubliez de remplir votre ";
-	include 'acces_db.php';
 	// test de l'existance de la variable dans l'array, si (?) vrai sinon (:)
 	$name = isset($data['name']) ? $data['name'] : '';
 	$firstname = isset($data['firstname']) ? $data['firstname'] : '';
@@ -24,7 +23,7 @@ require 'acces_db.php';
 		echo "Connection échoué";
 		die('Error connecton base : ' . $connexion -> error);
 	}
-	if ($name && $firstname && $mail && $niveau) {
+	if ($name && $firstname && $mail) {
 		echo sprintf('<h3> %2$s %1$s votre e-mail %3$s et vous estimez avoir un niveau de %4$s </h3>', $name, $firstname, $mail, $niveau);
 		$txtBtn = "Corriger";
 		$sql = "INSERT INTO users (name, firstname, mail, niveau) VALUES ('$name', '$firstname','$mail','$niveau1') ON DUPLICATE KEY UPDATE name='$name',firstname='$firstname',niveau='$niveau1'";
@@ -59,7 +58,7 @@ require 'acces_db.php';
 			}
 		    ?><br />
 		
-		    <label>Votre niveau : <input type="range" name="niveau" min="0" max="10" step="1" value="<?php echo $niveau ?>"/></label><br />
+		    
 		    <!--p><input type="submit" value="<?php echo $txtBtn ?>"/></p> -- > ancien input-->
 		    <div class="widget">
 		    	<button id="opener" class="ui-button ui-widget ui-corner-all" type="submit"><?php echo $txtBtn ?></button>
