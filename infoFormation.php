@@ -2,6 +2,7 @@
 include 'header.php';
 require 'acces_db.php';
 ?>
+
 <?php 
 $connexion = new mysqli(HOST, USER, PWD, DB);
 	if(!empty($_POST)){
