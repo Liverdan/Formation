@@ -1,18 +1,18 @@
 <?php
 include 'header.php';
-require 'acces_db.php';
+include 'acces_db.php';
 ?>
-<div class="formulaire">
+<div class="formulaire pied_page">
     <?php
-	//les inputs sont poussé dans $_GET ou POST puis récupérer dans l'array $data
+	//les inputs sont poussé dans $_GET ou $_POST puis récupérer dans l'array $data
 	$data = $_POST;
 	$firstname = '';
 	$name = '';
 	$mail = '';
 	$niveau = 5;
 	$txtBtn = 'Envoyer';
-	$alerte = "Vous avez oubliez de remplir votre ";
-	// test de l'existance de la variable dans l'array, si (?) vrai sinon (:)
+	$alerte = "Vous devez compléter votre ";
+	// test de l'existance de la variable dans l'array $data, si (?) vrai sinon (:)
 	$name = isset($data['name']) ? $data['name'] : '';
 	$firstname = isset($data['firstname']) ? $data['firstname'] : '';
 	$mail = isset($data['mail']) ? $data['mail'] : '';
@@ -24,19 +24,26 @@ require 'acces_db.php';
 		die('Error connecton base : ' . $connexion -> error);
 	}
 	if ($name && $firstname && $mail) {
-		echo sprintf('<h3> %2$s %1$s votre e-mail %3$s et vous estimez avoir un niveau de %4$s </h3>', $name, $firstname, $mail, $niveau);
+		echo sprintf('<h3>Bonjour %2$s %1$s votre e-mail %3$s</h3>', $name, $firstname, $mail);
+		// Affiche les données présentes dans la table categories
+		$sqlaf = $connexion->query("SELECT * FROM categories ORDER BY Pos DESC");
+			$sqlaf->data_seek(0);
+			while ($row = $sqlaf->fetch_assoc()) {
+				$nChoix= "choix".$row['Pos'];
+				$nLevel="niveau".$row['Pos'];
+		    	echo "<li>".$nChoix." ".$row['id'] ." ". $row['cat']." ".$nLevel." ".$row['level']. "<li>";
+			};
 		$txtBtn = "Corriger";
-		$sql = "INSERT INTO users (name, firstname, mail, niveau) VALUES ('$name', '$firstname','$mail','$niveau1') ON DUPLICATE KEY UPDATE name='$name',firstname='$firstname',niveau='$niveau1'";
-		if ($connexion -> query($sql)) {
-			echo '<div id="dialog" title="Confirmation"><p>Merci pour votre participation</p></div>';
+		$sqlins = "INSERT INTO users (name, firstname, mail) VALUES ('$name', '$firstname','$mail') ON DUPLICATE KEY UPDATE name='$name',firstname='$firstname'";
+		if ($connexion -> query($sqlins)) {
+			//echo "<div id='dialog' title='Confirmation'><p>Merci pour votre participation</p></div>";
 		} else {
 			echo "<p>Requete planté</p>";
 		}
 	}
-	$connexion -> close();
+	//$connexion -> close();
     ?>
-
-    <p>
+<!--formulaire civilité--> 
     	<form method="post">
 		    <label>Votre nom : <input type="text" name="name" placeholder="Nom" value="<?php echo $name ?>"/></label>
 		    <?php
@@ -57,17 +64,41 @@ require 'acces_db.php';
 				echo sprintf('<span>%s mail</span>', $alerte);
 			}
 		    ?><br />
-		
-		    
-		    <!--p><input type="submit" value="<?php echo $txtBtn ?>"/></p> -- > ancien input-->
-		    <div class="widget">
+		        
+			<h2>Vos priorités et niveaux</h2>
+			<p>Classer par ordre croissant, en déplacant les flèches suivantes <span class="ui-icon ui-icon-arrowthick-2-n-s"></span> votre choix de formation.</p>
+			<p><i>(Le premier étant le plus important)</i></p>
+			<!--formulaire priorités et niveaux-->
+			<ul id="sortable">
+				<?php
+				$i=0;
+				//$connexion = new mysqli(HOST, USER, PWD, DB);
+				$sql = $connexion->query("SELECT * FROM categories ORDER BY Pos DESC");
+				$sql->data_seek(0);
+				while ($row = $sql->fetch_assoc()) {
+					$i++;
+				?>
+				<li>
+					<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+			    	<input type="hidden" name="Categorie[<?php echo $i;?>][id]" value="<?php echo $row["id"];?>"/>
+			    	<input type="text" name="Categorie[<?php echo $i;?>][cat]" value="<?php echo $row["cat"];?>"/> 
+			    	<input type="hidden" class="positionInput" name="Categorie[<?php echo $i;?>][Pos]" value="<?php echo $row["Pos"];?>"/>
+			    	<span>0</span>
+			    	<input type="range" id="custom-handle" class="ui-slider-handle" name="Categorie[<?php echo $i;?>][level]" min="0" max="10" step="1" value="<?php echo $row["level"];?>"/>
+			    	<span>10</span>
+				</li>
+				<?php
+				}
+				?>
+			</ul>&nbsp;
+			<div class="widget">
 		    	<button id="opener" class="ui-button ui-widget ui-corner-all" type="submit"><?php echo $txtBtn ?></button>
 			</div>
 		</form>
-	</p>
 </div>
 <?php 
-$connexion = new mysqli(HOST, USER, PWD, DB);
+//Update de la liste catégorie dans la table categories
+//$connexion = new mysqli(HOST, USER, PWD, DB);
 	if(!empty($_POST)){
 		if ($connexion->connect_error) {
 	    die("Connection failed: " . $connexion->connect_error);
@@ -75,33 +106,67 @@ $connexion = new mysqli(HOST, USER, PWD, DB);
 	$cate=$_POST["Categorie"];
 	foreach ($cate as $c){
 		extract($c);
-		$sql=("UPDATE categories SET cat='$cat', Pos=$Pos, level=$level WHERE id=$id");
-		if ($connexion->query($sql)=== TRUE){
+		$sqlcat=("UPDATE categories SET cat='$cat', Pos=$Pos, level=$level WHERE id=$id");
+		if ($connexion->query($sqlcat)=== TRUE){
 			$res ="ok";
 		}else{
 			$res= "Ko";
 		}
 	}
-	$connexion->close();
-	//print_r($res);
+	//$connexion->close();
+	print_r($res);
 }
  ?>
-<div class="pied_page"	
+ *************************************************
+ <?php 
+//$connexion = new mysqli(HOST, USER, PWD, DB);
+	if(!empty($_POST)){
+		if ($connexion->connect_error) {
+	    die("Connection failed: " . $connexion->connect_error);
+	}
+	//$connexion = new mysqli(HOST, USER, PWD, DB);
+			$sqlw = $connexion->query("SELECT * FROM categories ORDER BY Pos DESC");
+			$sqlw->data_seek(0);
+			while ($row = $sqlw->fetch_assoc()) {
+				$nChoix= "choix".$row['Pos'];
+				$nLevel="niveau".$row['Pos'];
+		    	$cate=$_POST["Categorie"];
+	foreach ($cate as $c){
+		extract($c);
+		$sqlu=("UPDATE users SET Choix-1=$id WHERE name='$name'");
+		if ($connexion->query($sqlu)=== TRUE){
+			$res ="ok";
+		}else{
+			$res= "Ko";
+		}
+		}
+		};
+	
+	$connexion->close();
+	print_r($res);
+}
+ ?>
+ <!--*************************************************-->
+<!--div class="pied_page"	
 	<div id="infoFormation">
-		<!--ul>
+		<ul>
 			<?php
 			$connexion = new mysqli(HOST, USER, PWD, DB);
-			$sql = $connexion->query("SELECT * FROM categories ORDER BY Pos DESC");
-			$sql->data_seek(0);
-			while ($row = $sql->fetch_assoc()) {
-		    	echo "<li>" . $row['cat']." ".$row['Pos'] ." ".$row['level']. "<li>";
+			$sqlaf = $connexion->query("SELECT * FROM categories ORDER BY Pos DESC");
+			$sqlaf->data_seek(0);
+			while ($row = $sqlaf->fetch_assoc()) {
+				$nChoix= "choix".$row['Pos'];
+				$nLevel="niveau".$row['Pos'];
+		    	echo "<li>".$nChoix." ".$row['id'] ." ". $row['cat']." ".$nLevel." ".$row['level']. "<li>";
 			};
 			?>
-		</ul-->
-		<h2>Vos priorités et niveaux</h2>
-		<p>Classer par ordre croissant, en déplacant les flèches suivantes <span class="ui-icon ui-icon-arrowthick-2-n-s"></span> votre choix de formation.</p>
-		<p><i>(Le premier étant le plus important)</i></p>
-		<form method="post" action="infoFormation.php">
+		</ul>
+		&nbsp;
+		
+		<!--form method="post" action="infoFormation.php">
+			<h2>Vos priorités et niveaux</h2>
+			<p>Classer par ordre croissant, en déplacant les flèches suivantes <span class="ui-icon ui-icon-arrowthick-2-n-s"></span> votre choix de formation.</p>
+			<p><i>(Le premier étant le plus important)</i></p>
 			<ul id="sortable">
 				<?php
 				$i=0;
@@ -126,7 +191,7 @@ $connexion = new mysqli(HOST, USER, PWD, DB);
 			</ul> 
 			<button class="ui-button ui-widget ui-corner-all" type="submit">Enregistrer</button>
 		</form>
-	<div/>
+	<div/-->
 <?php
 echo "<div/>";
 include 'footer.php';
