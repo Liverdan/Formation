@@ -43,6 +43,27 @@ include 'acces_db.php';
 	}
 	//$connexion -> close();
     ?>
+    <?php 
+//Update de la liste catégorie dans la table categories
+//$connexion = new mysqli(HOST, USER, PWD, DB);
+	if(!empty($_POST)){
+		if ($connexion->connect_error) {
+	    die("Connection failed: " . $connexion->connect_error);
+	}
+	$cate=$_POST["Categorie"];
+	foreach ($cate as $c){
+		extract($c);
+		$sqlcat=("UPDATE categories SET cat='$cat', Pos=$Pos, level=$level WHERE id=$id");
+		if ($connexion->query($sqlcat)=== TRUE){
+			$res ="Requete Ok";
+		}else{
+			$res= "Requete Ko";
+		}
+	}
+	//$connexion->close();
+	print_r($res);
+}
+ ?>
 <!--formulaire civilité--> 
     	<form method="post">
 		    <label>Votre nom : <input type="text" name="name" placeholder="Nom" value="<?php echo $name ?>"/></label>
@@ -96,27 +117,7 @@ include 'acces_db.php';
 			</div>
 		</form>
 </div>
-<?php 
-//Update de la liste catégorie dans la table categories
-//$connexion = new mysqli(HOST, USER, PWD, DB);
-	if(!empty($_POST)){
-		if ($connexion->connect_error) {
-	    die("Connection failed: " . $connexion->connect_error);
-	}
-	$cate=$_POST["Categorie"];
-	foreach ($cate as $c){
-		extract($c);
-		$sqlcat=("UPDATE categories SET cat='$cat', Pos=$Pos, level=$level WHERE id=$id");
-		if ($connexion->query($sqlcat)=== TRUE){
-			$res ="ok";
-		}else{
-			$res= "Ko";
-		}
-	}
-	//$connexion->close();
-	print_r($res);
-}
- ?>
+
  *************************************************
  <?php 
 //$connexion = new mysqli(HOST, USER, PWD, DB);
