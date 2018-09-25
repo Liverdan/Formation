@@ -44,7 +44,7 @@
                             <a href="/">Premier lien</a>
                         </li>
                         <li>
-                            <a href="/infoFormation.php">Formulaire</a>
+                            <a href="/infoFormation.php">Formulaire Jquery</a>
                         </li>
                         <li>
                             <a href="/contact">Contacter nous</a>
