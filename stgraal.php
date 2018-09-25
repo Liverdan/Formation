@@ -44,10 +44,10 @@
                             <a href="/">Premier lien</a>
                         </li>
                         <li>
-                            <a href="/">Second lien</a>
+                            <a href="/infoFormation.php">Formulaire</a>
                         </li>
                         <li>
-                            <a href="/contact">Contact</a>
+                            <a href="/contact">Contacter nous</a>
                         </li>
                     </ul>
                 </nav>
@@ -61,10 +61,10 @@
                             <a href="/">Premier lien</a>
                         </li>
                         <li>
-                            <a href="/">Second lien</a>
+                            <a href="http://formation/infoFormation.php">2 lien</a>
                         </li>
                         <li>
-                            <a href="/contact">Contact</a>
+                            <a href="/contact">Contacter nous</a>
                         </li>
                     </ul>
                 </nav>
